@@ -8,6 +8,9 @@ func _on_pause_pressed() -> void:
 
 func _ready() -> void:
 	$health_bar.max_value = pl.resistance
+	await  get_tree().create_timer(0.1).timeout
+	if pl.ring.ability_tex !=null:
+		$touch_ability/ability_rect.texture = pl.ring.ability_tex
 	
 func _on_button_pressed() -> void:
 	get_tree().paused = false

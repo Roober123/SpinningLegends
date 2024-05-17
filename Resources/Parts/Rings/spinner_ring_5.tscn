@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj5daooc5o1xa"]
+[gd_scene load_steps=6 format=3 uid="uid://cj5daooc5o1xa"]
 
 [ext_resource type="Script" path="res://Scripts/ring_part.gd" id="1_jdoj8"]
 [ext_resource type="PackedScene" uid="uid://bopnsry1sdh7e" path="res://Effects/HealAbility/heal_ability.tscn" id="2_1w226"]
 [ext_resource type="PackedScene" uid="uid://rp0b0om03xyl" path="res://Resources/Parts/Ring5.glb" id="2_q2psu"]
+[ext_resource type="Texture2D" uid="uid://be2dyrlnappgi" path="res://Resources/ability1-0003.png" id="3_38617"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tg3xv"]
 height = 0.08
@@ -12,6 +13,7 @@ radius = 0.2
 script = ExtResource("1_jdoj8")
 ability = ExtResource("2_1w226")
 ability_cooldown = 10.0
+ability_tex = ExtResource("3_38617")
 up_part_origin = NodePath("up")
 center = NodePath("center")
 coll_shape = NodePath("CollisionShape3D")

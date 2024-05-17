@@ -3,6 +3,7 @@ extends Spinner_part
 
 @export var ability : PackedScene
 @export var ability_cooldown : float
+@export var ability_tex : Texture
 
 var can_use : bool = true
 
