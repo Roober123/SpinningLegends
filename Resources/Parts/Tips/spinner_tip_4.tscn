@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bayd8a4yjp807"]
+
+[ext_resource type="Script" path="res://Scripts/tip.gd" id="1_0hnmy"]
+[ext_resource type="PackedScene" uid="uid://xy4opxla3atv" path="res://Resources/Parts/tip4.glb" id="2_vfgh4"]
+[ext_resource type="PackedScene" uid="uid://oay60lqt07jd" path="res://Effects/spinner_trail.tscn" id="3_wclxy"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3x0gk"]
+height = 0.09
+radius = 0.1
+
+[node name="Spinner_Tip_4" type="Node3D" node_paths=PackedStringArray("up_part_origin", "center", "coll_shape")]
+script = ExtResource("1_0hnmy")
+ground_friction = 0.05
+up_part_origin = NodePath("up")
+center = NodePath("center")
+coll_shape = NodePath("CollisionShape3D")
+friction = 0.8
+resistance = 155.0
+mass = 1.7
+speed = 5.7
+tier = 3
+
+[node name="tip4" parent="." instance=ExtResource("2_vfgh4")]
+
+[node name="center" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045, 0)
+
+[node name="up" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045, 0)
+shape = SubResource("CylinderShape3D_3x0gk")
+
+[node name="SpinnerTrail" parent="." instance=ExtResource("3_wclxy")]

@@ -1,0 +1,451 @@
+[gd_scene load_steps=37 format=3 uid="uid://cdv5rvdylb70h"]
+
+[ext_resource type="Script" path="res://Menu/menu_screen.gd" id="1_8s7ft"]
+[ext_resource type="PackedScene" uid="uid://c1tygyhhrh6es" path="res://Scenes/buy_menu.tscn" id="2_lf2v1"]
+[ext_resource type="Texture2D" uid="uid://c2ytw3pav5u67" path="res://Resources/logo-0002.png" id="2_updws"]
+[ext_resource type="Texture2D" uid="uid://duvm28wqx2mft" path="res://Resources/loading-0001.png" id="3_mq7wr"]
+[ext_resource type="Texture2D" uid="uid://bt05q6uuvltat" path="res://Resources/play-0002.png" id="4_arfib"]
+[ext_resource type="Texture2D" uid="uid://dy30ib62h2832" path="res://Resources/1v1-0001.png" id="4_ym3eh"]
+[ext_resource type="Texture2D" uid="uid://leiwr2gucry4" path="res://Resources/options-0003.png" id="6_8lsvm"]
+[ext_resource type="Texture2D" uid="uid://xh0errpxrut4" path="res://Resources/shopb-0004.png" id="7_xo688"]
+[ext_resource type="Texture2D" uid="uid://b3grtqytf2t8f" path="res://Resources/quitb-0005.png" id="8_5ljio"]
+[ext_resource type="Texture2D" uid="uid://7c06a1fty8pu" path="res://Resources/xp-0001.png" id="10_04nvd"]
+[ext_resource type="Texture2D" uid="uid://c8fc461a5ymg" path="res://Resources/opscreen-0005.png" id="10_cqy1b"]
+[ext_resource type="Texture2D" uid="uid://crpysu7fviup2" path="res://Resources/vsync-0001.png" id="11_5clw6"]
+[ext_resource type="Texture2D" uid="uid://crq8nepwvndov" path="res://Resources/back-0003.png" id="11_15i3g"]
+[ext_resource type="Texture2D" uid="uid://caln7lncejnr7" path="res://Resources/physics_fps1-0003.png" id="11_h50j2"]
+[ext_resource type="Texture2D" uid="uid://c5u67f1kvf4y8" path="res://Resources/maxfps1-0004.png" id="11_mxvos"]
+[ext_resource type="Texture2D" uid="uid://b7o1nim45cqs1" path="res://Resources/physicsfps2-0002.png" id="12_nrtqa"]
+[ext_resource type="Texture2D" uid="uid://ew3f1rtp0qrn" path="res://Resources/resetprog-0008.png" id="12_rkkod"]
+[ext_resource type="Texture2D" uid="uid://bbaiybj0mv8ln" path="res://Resources/resolution_scsale-0006.png" id="14_rmdng"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hf6v0"]
+texture = ExtResource("4_arfib")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oigdf"]
+texture = ExtResource("4_arfib")
+modulate_color = Color(0.544974, 0.544974, 0.544974, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dicrk"]
+texture = ExtResource("4_arfib")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n7gb4"]
+texture = ExtResource("4_arfib")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v2ia2"]
+texture = ExtResource("4_ym3eh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hfppj"]
+texture = ExtResource("4_ym3eh")
+modulate_color = Color(0.682423, 0.632715, 0.324199, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pe063"]
+texture = ExtResource("6_8lsvm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hj7tl"]
+texture = ExtResource("6_8lsvm")
+modulate_color = Color(0.458405, 0.458405, 0.458405, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nl1dy"]
+texture = ExtResource("6_8lsvm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fjox1"]
+texture = ExtResource("6_8lsvm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_805pq"]
+texture = ExtResource("7_xo688")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6x2c7"]
+texture = ExtResource("7_xo688")
+modulate_color = Color(0.295867, 0.295866, 0.295866, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3bbpn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aoni6"]
+texture = ExtResource("7_xo688")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4b547"]
+texture = ExtResource("8_5ljio")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wfrnt"]
+texture = ExtResource("8_5ljio")
+modulate_color = Color(0.396889, 0.396889, 0.396889, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xr5cp"]
+texture = ExtResource("8_5ljio")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rsbcm"]
+texture = ExtResource("8_5ljio")
+
+[node name="Menu_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8s7ft")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.133196, 0.133196, 0.133196, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.6)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_mq7wr")
+
+[node name="title" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.062963
+anchor_right = 0.5
+anchor_bottom = 0.062963
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+scale = Vector2(7, 7)
+pivot_offset = Vector2(32, 0)
+texture = ExtResource("2_updws")
+stretch_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="xp_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.152083
+anchor_top = 0.528241
+anchor_right = 0.152083
+anchor_bottom = 0.528241
+offset_top = -33.5
+offset_right = 97.0
+offset_bottom = 33.5
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 64
+text = ":"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="xp" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0796875
+anchor_top = 0.486111
+anchor_right = 0.103646
+anchor_bottom = 0.486111
+offset_left = -36.0
+offset_right = 4.00002
+offset_bottom = 40.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("10_04nvd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.583333
+anchor_right = 0.5
+anchor_bottom = 0.583333
+offset_left = -150.0
+offset_top = -250.0
+offset_right = 150.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_play" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxTexture_hf6v0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_oigdf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dicrk")
+theme_override_styles/normal = SubResource("StyleBoxTexture_n7gb4")
+
+[node name="Button_1v_1" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxTexture_v2ia2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_v2ia2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hfppj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_v2ia2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_v2ia2")
+
+[node name="Button_options" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxTexture_pe063")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hj7tl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nl1dy")
+theme_override_styles/normal = SubResource("StyleBoxTexture_fjox1")
+
+[node name="Button_shop" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxTexture_805pq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6x2c7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3bbpn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_aoni6")
+
+[node name="Button_quit" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxTexture_4b547")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wfrnt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xr5cp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_rsbcm")
+
+[node name="Options" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.321569, 0.321569, 0.321569, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="Options"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_cqy1b")
+
+[node name="TextureRect" type="TextureRect" parent="Options"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.075
+anchor_right = 0.5
+anchor_bottom = 0.075
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 40.0
+grow_horizontal = 2
+scale = Vector2(5, 5)
+pivot_offset = Vector2(32, 0)
+texture = ExtResource("6_8lsvm")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.053125
+anchor_top = 0.274
+anchor_right = 0.299
+anchor_bottom = 0.486
+offset_top = 0.0799866
+offset_right = -244.08
+offset_bottom = -188.88
+theme_override_constants/separation = 40
+metadata/_edit_use_anchors_ = true
+
+[node name="VsyncControl" type="Control" parent="Options/VBoxContainer"]
+custom_minimum_size = Vector2(228, 67)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Options/VBoxContainer/VsyncControl"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_left = 160.0
+offset_top = 14.0
+offset_right = 226.0
+offset_bottom = 62.0
+
+[node name="Label" type="Label" parent="Options/VBoxContainer/VsyncControl"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 48
+text = "             On"
+
+[node name="TextureRect" type="TextureRect" parent="Options/VBoxContainer/VsyncControl"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -17.0
+offset_top = -9.99997
+offset_right = 139.0
+offset_bottom = 88.0
+texture = ExtResource("11_5clw6")
+
+[node name="PhysicsFPS" type="Control" parent="Options/VBoxContainer"]
+custom_minimum_size = Vector2(472, 78)
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="Options/VBoxContainer/PhysicsFPS"]
+layout_mode = 0
+offset_left = 280.0
+offset_right = 464.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 48
+placeholder_text = "160"
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Options/VBoxContainer/PhysicsFPS"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -38.0
+offset_right = 173.0
+offset_bottom = 78.0
+texture = ExtResource("11_h50j2")
+
+[node name="TextureRect2" type="TextureRect" parent="Options/VBoxContainer/PhysicsFPS"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 157.0
+offset_right = 277.0
+offset_bottom = 75.0
+texture = ExtResource("12_nrtqa")
+
+[node name="maxfpscontrol" type="Control" parent="Options/VBoxContainer"]
+custom_minimum_size = Vector2(472, 76)
+layout_mode = 2
+
+[node name="mx_fps_line_edit" type="LineEdit" parent="Options/VBoxContainer/maxfpscontrol"]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 2.0
+offset_right = 448.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 48
+placeholder_text = "unlimited"
+
+[node name="TextureRect" type="TextureRect" parent="Options/VBoxContainer/maxfpscontrol"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -6.0
+offset_right = -473.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_mxvos")
+
+[node name="TextureRect2" type="TextureRect" parent="Options/VBoxContainer/maxfpscontrol"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 115.0
+offset_right = 220.0
+offset_bottom = 86.0
+texture = ExtResource("12_nrtqa")
+
+[node name="resolution_scale" type="Control" parent="Options/VBoxContainer"]
+custom_minimum_size = Vector2(603, 77)
+layout_mode = 2
+
+[node name="res_scale" type="LineEdit" parent="Options/VBoxContainer/resolution_scale"]
+layout_mode = 0
+offset_left = 397.0
+offset_right = 581.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 48
+placeholder_text = "1.0"
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Options/VBoxContainer/resolution_scale"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -28.0
+offset_right = 496.0
+offset_bottom = 70.0
+texture = ExtResource("14_rmdng")
+
+[node name="Button_back" type="Button" parent="Options"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083
+anchor_top = 0.809
+anchor_right = 0.185
+anchor_bottom = 0.919
+offset_left = 0.639984
+offset_top = 0.279907
+offset_right = -123.2
+offset_bottom = -74.5201
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2.7, 2.7)
+theme_override_icons/icon = ExtResource("11_15i3g")
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="button_reset_progress" type="Button" parent="Options"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0583333
+anchor_top = -0.0185185
+anchor_right = -0.0583333
+anchor_bottom = -0.0185185
+offset_left = 1117.0
+offset_top = 686.0
+offset_right = 1427.0
+offset_bottom = 761.0
+scale = Vector2(1.5, 1.5)
+theme_override_font_sizes/font_size = 48
+theme_override_icons/icon = ExtResource("12_rkkod")
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="BuyMenu" parent="." instance=ExtResource("2_lf2v1")]
+visible = false
+layout_mode = 1
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
+[connection signal="pressed" from="VBoxContainer/Button_play" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button_1v_1" to="." method="_on_button_1v_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button_options" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button_shop" to="." method="_on_button_shop_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button_quit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="Options/VBoxContainer/VsyncControl/Button" to="." method="_on_button_pressed"]
+[connection signal="text_submitted" from="Options/VBoxContainer/PhysicsFPS/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="Options/VBoxContainer/maxfpscontrol/mx_fps_line_edit" to="." method="_on_mx_fps_line_edit_text_submitted"]
+[connection signal="text_submitted" from="Options/VBoxContainer/resolution_scale/res_scale" to="." method="_on_res_scale_text_submitted"]
+[connection signal="pressed" from="Options/Button_back" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="Options/button_reset_progress" to="." method="_on_button_reset_progress_pressed"]
+[connection signal="pressed" from="BuyMenu/button_back_shop" to="." method="_on_button_back_shop_pressed"]
+
+[editable path="BuyMenu"]

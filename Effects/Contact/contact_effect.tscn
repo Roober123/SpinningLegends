@@ -1,0 +1,60 @@
+[gd_scene load_steps=13 format=3 uid="uid://dh277at6d8ykb"]
+
+[ext_resource type="Script" path="res://Effects/Contact/contact_effect.gd" id="1_5f0og"]
+[ext_resource type="Texture2D" uid="uid://cqtsrf30we4be" path="res://Effects/rhomb.png" id="1_60m5y"]
+[ext_resource type="Shader" uid="uid://d4l753wtlap5j" path="res://Effects/Contact/contact_effect.tres" id="1_isj16"]
+
+[sub_resource type="Curve" id="Curve_14oe7"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0.112745, 101.944), 0.0, 0.0, 0, 0, Vector2(0.602941, 93.1963), -57.565, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vsl5w"]
+curve = SubResource("Curve_14oe7")
+
+[sub_resource type="Gradient" id="Gradient_0gub7"]
+colors = PackedColorArray(16, 0.7, 0, 1, 4, 5, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pr3sy"]
+gradient = SubResource("Gradient_0gub7")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_5l6k1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.375, 0.720561), 0.0, 0.0, 0, 0, Vector2(0.622549, 0.647664), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_8xkvo"]
+curve = SubResource("Curve_5l6k1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n48dk"]
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_vsl5w")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.4
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_8xkvo")
+color_ramp = SubResource("GradientTexture1D_pr3sy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_841n2"]
+render_priority = 0
+shader = ExtResource("1_isj16")
+shader_parameter/Texture = ExtResource("1_60m5y")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ees8p"]
+material = SubResource("ShaderMaterial_841n2")
+
+[node name="ContactEffect" type="Node3D"]
+script = ExtResource("1_5f0og")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 1
+lifetime = 0.2
+one_shot = true
+fixed_fps = 144
+visibility_aabb = AABB(-1.00001, -1.00001, -1.00001, 2.00002, 2.00002, 2.00002)
+process_material = SubResource("ParticleProcessMaterial_n48dk")
+draw_pass_1 = SubResource("QuadMesh_ees8p")
+
+[connection signal="finished" from="GPUParticles3D" to="." method="_on_gpu_particles_3d_finished"]

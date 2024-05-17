@@ -1,0 +1,125 @@
+[gd_scene load_steps=20 format=3 uid="uid://r6ydfm5bj4yr"]
+
+[ext_resource type="Shader" uid="uid://dd0pirxmhjv3e" path="res://Effects/cometAbility/comet_smoke.tres" id="1_vx4it"]
+[ext_resource type="Texture2D" uid="uid://cxv042mqyd0yy" path="res://Effects/smoke_texture.png" id="2_i0yq2"]
+[ext_resource type="Texture2D" uid="uid://dhs7vpwmevkbb" path="res://Effects/circle.png" id="3_hrm34"]
+
+[sub_resource type="Gradient" id="Gradient_8b5as"]
+offsets = PackedFloat32Array(0, 0.511811)
+colors = PackedColorArray(1.6, 1.6, 1.6, 1, 0.00495169, 0.00599456, 0.00527085, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m357j"]
+gradient = SubResource("Gradient_8b5as")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_hrueq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0219779), -2.62046, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gm6m4"]
+curve = SubResource("Curve_hrueq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ldc6s"]
+emission_shape_scale = Vector3(0.4, 0.4, 0.4)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 1.07288e-05
+angle_max = 360.3
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_gm6m4")
+color_ramp = SubResource("GradientTexture1D_m357j")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qdwj5"]
+render_priority = 0
+shader = ExtResource("1_vx4it")
+shader_parameter/Texture = ExtResource("2_i0yq2")
+
+[sub_resource type="QuadMesh" id="QuadMesh_yqec2"]
+material = SubResource("ShaderMaterial_qdwj5")
+size = Vector2(1.5, 1.5)
+
+[sub_resource type="Curve" id="Curve_asio0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.63236, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6twgh"]
+curve = SubResource("Curve_asio0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r3cb5"]
+emission_shape_scale = Vector3(0.2, 0.2, 0.2)
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_6twgh")
+color = Color(1.3, 0.4, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_be2xd"]
+render_priority = 0
+shader = ExtResource("1_vx4it")
+shader_parameter/Texture = ExtResource("3_hrm34")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1hb5u"]
+material = SubResource("ShaderMaterial_be2xd")
+size = Vector2(0.9, 0.9)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_123kr"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+spread = 180.0
+flatness = 0.758
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -25.13
+radial_accel_max = -13.61
+tangential_accel_min = 3.14
+tangential_accel_max = 3.15
+color = Color(1.05, 1.05, 1.05, 1)
+
+[sub_resource type="Curve" id="Curve_satq5"]
+_data = [Vector2(0, 0.989011), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.1631, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_codpw"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_3bvc4"]
+material = SubResource("StandardMaterial3D_codpw")
+size = 0.1
+sections = 4
+curve = SubResource("Curve_satq5")
+
+[node name="comet" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 38
+lifetime = 0.4
+fixed_fps = 144
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_ldc6s")
+draw_pass_1 = SubResource("QuadMesh_yqec2")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+sorting_offset = -1.0
+amount = 16
+lifetime = 0.2
+fixed_fps = 144
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_r3cb5")
+draw_pass_1 = SubResource("QuadMesh_1hb5u")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="."]
+amount = 26
+lifetime = 1.5
+fixed_fps = 144
+transform_align = 3
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_123kr")
+draw_pass_1 = SubResource("RibbonTrailMesh_3bvc4")

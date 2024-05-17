@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsrdvqcy5rw8r"]
+
+[ext_resource type="Script" path="res://Scripts/ring_part.gd" id="1_2lsj8"]
+[ext_resource type="PackedScene" uid="uid://7gtyixgbfayq" path="res://Resources/Parts/ring2.glb" id="2_2e2n1"]
+[ext_resource type="PackedScene" uid="uid://bnc7yyulvxuvw" path="res://Effects/RocketAbility/rocket_ability.tscn" id="2_foser"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_knm4d"]
+height = 0.08
+radius = 0.2
+
+[node name="Spinner_Ring_2" type="Node3D" node_paths=PackedStringArray("up_part_origin", "center", "coll_shape")]
+script = ExtResource("1_2lsj8")
+ability = ExtResource("2_foser")
+ability_cooldown = 5.0
+up_part_origin = NodePath("up")
+center = NodePath("center")
+coll_shape = NodePath("CollisionShape3D")
+friction = 0.5
+resistance = 160.0
+mass = 2.0
+speed = 4.0
+tier = 2
+
+[node name="ring2" parent="." instance=ExtResource("2_2e2n1")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+shape = SubResource("CylinderShape3D_knm4d")
+
+[node name="up" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+
+[node name="center" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)

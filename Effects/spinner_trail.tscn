@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://oay60lqt07jd"]
+
+[sub_resource type="Curve" id="Curve_4s8uf"]
+_data = [Vector2(0, 0.386449), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_llaaf"]
+curve = SubResource("Curve_4s8uf")
+
+[sub_resource type="Curve" id="Curve_bmmo7"]
+max_value = 3.0
+_data = [Vector2(0, 1.1229), 0.0, 0.0, 0, 0, Vector2(0.965686, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yx1pa"]
+curve = SubResource("Curve_bmmo7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yg3vc"]
+particle_flag_damping_as_friction = true
+emission_shape_scale = Vector3(0.2, 0.1, 0.1)
+emission_shape = 1
+emission_sphere_radius = 0.1
+spread = 8.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 0.02
+radial_accel_max = 0.02
+tangential_accel_min = 0.01
+tangential_accel_max = 0.01
+damping_min = 1.376
+damping_max = 1.376
+scale_over_velocity_curve = SubResource("CurveTexture_yx1pa")
+color = Color(1, 0.556816, 0.146862, 1)
+alpha_curve = SubResource("CurveTexture_llaaf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7q13"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_m6agv"]
+material = SubResource("StandardMaterial3D_x7q13")
+size = Vector2(0.02, 0.02)
+orientation = 2
+
+[node name="SpinnerTrail" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+amount = 32
+lifetime = 0.2
+fixed_fps = 144
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_yg3vc")
+draw_pass_1 = SubResource("PlaneMesh_m6agv")

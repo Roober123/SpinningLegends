@@ -1,0 +1,105 @@
+[gd_scene load_steps=17 format=3 uid="uid://ugo5qk02k8dk"]
+
+[ext_resource type="Shader" uid="uid://dkcwnu3uasjwe" path="res://Effects/Explosion/explosion.tres" id="1_g35b1"]
+[ext_resource type="Texture2D" uid="uid://cxv042mqyd0yy" path="res://Effects/smoke_texture.png" id="2_vamq7"]
+
+[sub_resource type="Curve" id="Curve_xdnk3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.16326, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dl2mm"]
+curve = SubResource("Curve_xdnk3")
+
+[sub_resource type="Gradient" id="Gradient_it8f8"]
+offsets = PackedFloat32Array(0, 0.346457, 1)
+colors = PackedColorArray(3.5, 1, 1, 1, 3.5, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hiyfn"]
+gradient = SubResource("Gradient_it8f8")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_buwfo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0322581, 0.978022), 0.479052, 0.479052, 0, 0, Vector2(0.832258, 0.978022), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_kwp3u"]
+curve = SubResource("Curve_buwfo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6uvqv"]
+emission_shape_scale = Vector3(3, 0.8, 3)
+emission_shape = 1
+emission_sphere_radius = 0.5
+angle_min = 1.07288e-05
+angle_max = 360.0
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_kwp3u")
+color_ramp = SubResource("GradientTexture1D_hiyfn")
+alpha_curve = SubResource("CurveTexture_dl2mm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dhdcd"]
+render_priority = 0
+shader = ExtResource("1_g35b1")
+shader_parameter/Texture = ExtResource("2_vamq7")
+
+[sub_resource type="QuadMesh" id="QuadMesh_fh7oc"]
+material = SubResource("ShaderMaterial_dhdcd")
+size = Vector2(1.3, 1.3)
+
+[sub_resource type="Curve" id="Curve_q20pq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.12271, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2wj3c"]
+curve = SubResource("Curve_q20pq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_idbf6"]
+emission_shape_scale = Vector3(3, 0.6, 3)
+emission_shape = 1
+emission_sphere_radius = 0.6
+spread = 180.0
+flatness = 0.5
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+damping_min = 1.0
+damping_max = 1.0
+scale_curve = SubResource("CurveTexture_2wj3c")
+color = Color(1.3, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v06w4"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_46sbj"]
+material = SubResource("StandardMaterial3D_v06w4")
+size = Vector2(0.01, 0.1)
+
+[node name="CometExplosion" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+sorting_offset = 2.0
+cast_shadow = 0
+emitting = false
+amount = 256
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.6
+fixed_fps = 144
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_6uvqv")
+draw_pass_1 = SubResource("QuadMesh_fh7oc")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+sorting_offset = 4.0
+cast_shadow = 0
+emitting = false
+amount = 64
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.6
+fixed_fps = 144
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_idbf6")
+draw_pass_1 = SubResource("QuadMesh_46sbj")

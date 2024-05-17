@@ -1,0 +1,145 @@
+[gd_scene load_steps=21 format=3 uid="uid://c7rqlmmbq8um5"]
+
+[ext_resource type="Script" path="res://Effects/BlackholeAbility/blackhole_ability.gd" id="1_f54se"]
+[ext_resource type="Shader" uid="uid://c8jjsygrraslb" path="res://Effects/BlackholeAbility/black_hole_sphere.tres" id="2_a1b6p"]
+[ext_resource type="Shader" uid="uid://cypcvuums35eo" path="res://Effects/BlackholeAbility/dust_shader.tres" id="3_vqlbn"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pmhfk"]
+gravity = Vector3(0, 0, 0)
+color = Color(1.2, 1.2, 1.2, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i7tvt"]
+render_priority = 0
+shader = ExtResource("2_a1b6p")
+
+[sub_resource type="SphereMesh" id="SphereMesh_5e36s"]
+material = SubResource("ShaderMaterial_i7tvt")
+radius = 0.3
+height = 0.6
+radial_segments = 32
+rings = 16
+
+[sub_resource type="Curve" id="Curve_ijf1j"]
+_data = [Vector2(0, 0.769231), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.29945, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fhsrl"]
+curve = SubResource("Curve_ijf1j")
+
+[sub_resource type="Curve" id="Curve_g1spe"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.321324), -2.61804, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_b14g8"]
+curve = SubResource("Curve_g1spe")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yrjh1"]
+spread = 0.0
+initial_velocity_max = 6.37
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 1.096
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -100.0
+radial_accel_max = -92.99
+tangential_accel_min = 13.55
+tangential_accel_max = 31.2
+scale_curve = SubResource("CurveTexture_b14g8")
+color = Color(0, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_fhsrl")
+turbulence_influence_max = 0.131
+
+[sub_resource type="Curve" id="Curve_l8l3w"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.63826, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kk5yl"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_qwi0r"]
+material = SubResource("StandardMaterial3D_kk5yl")
+size = 0.3
+sections = 4
+section_length = 0.1
+curve = SubResource("Curve_l8l3w")
+
+[sub_resource type="Curve" id="Curve_w3suf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.71628, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6uca3"]
+curve = SubResource("Curve_w3suf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3ngdn"]
+emission_shape_scale = Vector3(1, 0.2, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 1.07288e-05
+angle_max = 369.4
+spread = 0.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -92.67
+radial_accel_max = -38.22
+tangential_accel_min = 20.94
+tangential_accel_max = 42.41
+scale_min = 0.8
+scale_max = 2.0
+color = Color(0, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_6uca3")
+turbulence_noise_strength = 3.06
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gc6fq"]
+render_priority = 0
+shader = ExtResource("3_vqlbn")
+
+[sub_resource type="QuadMesh" id="QuadMesh_nbgue"]
+material = SubResource("ShaderMaterial_gc6fq")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_t7fyn"]
+radius = 5.26247
+
+[node name="blackholeAbility" type="Node3D"]
+script = ExtResource("1_f54se")
+duration = 7.0
+attract_power = 130.0
+
+[node name="BlackHole" type="Node3D" parent="."]
+
+[node name="shpere" type="GPUParticles3D" parent="BlackHole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00332826, 0)
+sorting_offset = 5.0
+amount = 1
+fixed_fps = 100
+process_material = SubResource("ParticleProcessMaterial_pmhfk")
+draw_pass_1 = SubResource("SphereMesh_5e36s")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="BlackHole"]
+cast_shadow = 0
+amount = 64
+lifetime = 3.0
+fixed_fps = 144
+transform_align = 3
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_yrjh1")
+draw_pass_1 = SubResource("RibbonTrailMesh_qwi0r")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="BlackHole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0345808, 0)
+sorting_offset = -2.0
+amount = 32
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_3ngdn")
+draw_pass_1 = SubResource("QuadMesh_nbgue")
+
+[node name="body_detector" type="Area3D" parent="."]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="body_detector"]
+visible = false
+shape = SubResource("CylinderShape3D_t7fyn")
+
+[connection signal="body_entered" from="body_detector" to="." method="_on_body_detector_body_entered"]
+[connection signal="body_exited" from="body_detector" to="." method="_on_body_detector_body_exited"]

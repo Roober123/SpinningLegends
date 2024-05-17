@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnc7yyulvxuvw"]
+
+[ext_resource type="Script" path="res://Effects/RocketAbility/rocket_ability.gd" id="1_lw0e1"]
+
+[node name="RocketAbility" type="Node3D"]
+script = ExtResource("1_lw0e1")
+damage = 50.0
+speed = 7.5
+rocket_rot_degrees = 30.0
+knock_power = 30.0

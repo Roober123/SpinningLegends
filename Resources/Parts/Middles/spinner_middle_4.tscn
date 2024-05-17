@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bal2rl0tgktsq"]
+
+[ext_resource type="Script" path="res://Scripts/middle_part.gd" id="1_mp5xg"]
+[ext_resource type="PackedScene" uid="uid://bx1oyfjxpo33i" path="res://Resources/Parts/middle4.glb" id="2_t2kc1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k0ix1"]
+height = 0.04
+radius = 0.15
+
+[node name="Spinner_Middle_4" type="Node3D" node_paths=PackedStringArray("up_part_origin", "center", "coll_shape")]
+script = ExtResource("1_mp5xg")
+up_part_origin = NodePath("up")
+center = NodePath("center")
+coll_shape = NodePath("CollisionShape3D")
+friction = 0.9
+resistance = 180.0
+mass = 1.5
+speed = 2.0
+tier = 3
+
+[node name="middle4" parent="." instance=ExtResource("2_t2kc1")]
+
+[node name="center" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
+
+[node name="up" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
+shape = SubResource("CylinderShape3D_k0ix1")

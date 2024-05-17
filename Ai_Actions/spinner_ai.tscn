@@ -1,0 +1,153 @@
+[gd_scene load_steps=18 format=3 uid="uid://ma3smt7656q3"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_nqh7a"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="2_3u7qr"]
+[ext_resource type="Script" path="res://Ai_Actions/cast_ability.gd" id="3_k8mhv"]
+[ext_resource type="Script" path="res://Ai_Actions/AttackClosest.gd" id="4_75o0a"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="4_j70w1"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/inverter.gd" id="5_c2jgf"]
+[ext_resource type="Script" path="res://Ai_Actions/FarFromCenter.gd" id="5_d63r0"]
+[ext_resource type="Script" path="res://Ai_Actions/move_towards_center.gd" id="5_fxa0d"]
+[ext_resource type="Script" path="res://Ai_Actions/has_ability.gd" id="6_0xwyh"]
+[ext_resource type="PackedScene" uid="uid://bopnsry1sdh7e" path="res://Effects/HealAbility/heal_ability.tscn" id="7_n5g0s"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/time_limiter.gd" id="9_epxcl"]
+[ext_resource type="Script" path="res://Ai_Actions/stay.gd" id="10_6xjyt"]
+[ext_resource type="Script" path="res://Ai_Actions/hasEnemyClose.gd" id="10_bln68"]
+[ext_resource type="Script" path="res://Ai_Actions/reduce_speed.gd" id="10_y6kvf"]
+[ext_resource type="PackedScene" uid="uid://34lwwgrnlcky" path="res://Effects/BeamAbility/beam_ability.tscn" id="12_7gbrw"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="14_kid2f"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence_reactive.gd" id="15_b4doh"]
+
+[node name="SpinnerAI" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("1_nqh7a")
+blackboard = NodePath("@Node@17520")
+actor = NodePath("")
+
+[node name="SelectorComposite" type="Node" parent="."]
+script = ExtResource("2_3u7qr")
+
+[node name="beam" type="Node" parent="SelectorComposite"]
+script = ExtResource("4_j70w1")
+
+[node name="has_ability" type="Node" parent="SelectorComposite/beam"]
+script = ExtResource("6_0xwyh")
+ability = ExtResource("12_7gbrw")
+
+[node name="SelectorReactiveComposite" type="Node" parent="SelectorComposite/beam"]
+script = ExtResource("14_kid2f")
+
+[node name="InverterDecorator" type="Node" parent="SelectorComposite/beam/SelectorReactiveComposite"]
+script = ExtResource("5_c2jgf")
+
+[node name="FarFromCenter" type="Node" parent="SelectorComposite/beam/SelectorReactiveComposite/InverterDecorator"]
+script = ExtResource("5_d63r0")
+max_distance_from_center = 2.4
+
+[node name="MoveTowardsCenter" type="Node" parent="SelectorComposite/beam/SelectorReactiveComposite"]
+script = ExtResource("5_fxa0d")
+max_time = 0.4
+
+[node name="SequenceReactiveComposite" type="Node" parent="SelectorComposite/beam"]
+script = ExtResource("15_b4doh")
+
+[node name="SelectorReactiveComposite2" type="Node" parent="SelectorComposite/beam/SequenceReactiveComposite"]
+script = ExtResource("14_kid2f")
+
+[node name="InverterDecorator" type="Node" parent="SelectorComposite/beam/SequenceReactiveComposite/SelectorReactiveComposite2"]
+script = ExtResource("5_c2jgf")
+
+[node name="hasEnemyClose" type="Node" parent="SelectorComposite/beam/SequenceReactiveComposite/SelectorReactiveComposite2/InverterDecorator"]
+script = ExtResource("10_bln68")
+close_max_dist = 0.5
+
+[node name="cast_ability" type="Node" parent="SelectorComposite/beam/SequenceReactiveComposite/SelectorReactiveComposite2"]
+script = ExtResource("3_k8mhv")
+
+[node name="AttackClosest" type="Node" parent="SelectorComposite/beam/SequenceReactiveComposite"]
+script = ExtResource("4_75o0a")
+max_time = 2.5
+
+[node name="MoveTowardsCenter" type="Node" parent="SelectorComposite/beam"]
+script = ExtResource("5_fxa0d")
+max_time = 0.8
+
+[node name="heal" type="Node" parent="SelectorComposite"]
+script = ExtResource("4_j70w1")
+
+[node name="has_ability" type="Node" parent="SelectorComposite/heal"]
+script = ExtResource("6_0xwyh")
+ability = ExtResource("7_n5g0s")
+
+[node name="SelectorReactiveComposite" type="Node" parent="SelectorComposite/heal"]
+script = ExtResource("14_kid2f")
+
+[node name="InverterDecorator" type="Node" parent="SelectorComposite/heal/SelectorReactiveComposite"]
+script = ExtResource("5_c2jgf")
+
+[node name="FarFromCenter" type="Node" parent="SelectorComposite/heal/SelectorReactiveComposite/InverterDecorator"]
+script = ExtResource("5_d63r0")
+max_distance_from_center = 2.4
+
+[node name="MoveTowardsCenter" type="Node" parent="SelectorComposite/heal/SelectorReactiveComposite"]
+script = ExtResource("5_fxa0d")
+max_time = 0.4
+
+[node name="TimeLimiterDecorator" type="Node" parent="SelectorComposite/heal"]
+script = ExtResource("9_epxcl")
+wait_time = 2.0
+
+[node name="AttackClosest" type="Node" parent="SelectorComposite/heal/TimeLimiterDecorator"]
+script = ExtResource("4_75o0a")
+
+[node name="MoveTowardsCenter" type="Node" parent="SelectorComposite/heal"]
+script = ExtResource("5_fxa0d")
+max_time = 0.35
+
+[node name="reduce_speed" type="Node" parent="SelectorComposite/heal"]
+script = ExtResource("10_y6kvf")
+max_time = 0.1
+
+[node name="cast_ability" type="Node" parent="SelectorComposite/heal"]
+script = ExtResource("3_k8mhv")
+
+[node name="stay" type="Node" parent="SelectorComposite/heal"]
+script = ExtResource("10_6xjyt")
+max_time = 1.8
+
+[node name="AttackClosest" type="Node" parent="SelectorComposite/heal"]
+script = ExtResource("4_75o0a")
+max_time = 4.0
+
+[node name="basic" type="Node" parent="SelectorComposite"]
+script = ExtResource("4_j70w1")
+
+[node name="SelectorReactiveComposite3" type="Node" parent="SelectorComposite/basic"]
+script = ExtResource("14_kid2f")
+
+[node name="InverterDecorator" type="Node" parent="SelectorComposite/basic/SelectorReactiveComposite3"]
+script = ExtResource("5_c2jgf")
+
+[node name="FarFromCenter" type="Node" parent="SelectorComposite/basic/SelectorReactiveComposite3/InverterDecorator"]
+script = ExtResource("5_d63r0")
+max_distance_from_center = 2.4
+
+[node name="MoveTowardsCenter" type="Node" parent="SelectorComposite/basic/SelectorReactiveComposite3"]
+script = ExtResource("5_fxa0d")
+max_time = 0.4
+
+[node name="SequenceReactiveComposite" type="Node" parent="SelectorComposite/basic"]
+script = ExtResource("15_b4doh")
+
+[node name="cast_ability" type="Node" parent="SelectorComposite/basic/SequenceReactiveComposite"]
+script = ExtResource("3_k8mhv")
+
+[node name="SequenceComposite" type="Node" parent="SelectorComposite/basic/SequenceReactiveComposite"]
+script = ExtResource("4_j70w1")
+
+[node name="AttackClosest" type="Node" parent="SelectorComposite/basic/SequenceReactiveComposite/SequenceComposite"]
+script = ExtResource("4_75o0a")
+max_time = 1.0
+
+[node name="MoveTowardsCenter" type="Node" parent="SelectorComposite/basic/SequenceReactiveComposite/SequenceComposite"]
+script = ExtResource("5_fxa0d")
+max_time = 0.25

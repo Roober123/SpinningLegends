@@ -1,0 +1,2 @@
+class_name Spinner_Middle
+extends Spinner_part

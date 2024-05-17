@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://cyqp7md78bkn5"]
+
+[ext_resource type="Script" path="res://Scripts/tip.gd" id="1_eihnw"]
+[ext_resource type="PackedScene" uid="uid://b1eiy61jiw0qf" path="res://Resources/Parts/tip5.glb" id="2_awi6s"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rfy1n"]
+height = 0.09
+radius = 0.075
+
+[sub_resource type="Curve" id="Curve_jaiqb"]
+_data = [Vector2(0, 0.386449), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_m85vu"]
+curve = SubResource("Curve_jaiqb")
+
+[sub_resource type="Curve" id="Curve_2q8xb"]
+max_value = 3.0
+_data = [Vector2(0, 1.1229), 0.0, 0.0, 0, 0, Vector2(0.965686, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0k2fb"]
+curve = SubResource("Curve_2q8xb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l1vmo"]
+particle_flag_damping_as_friction = true
+emission_shape_scale = Vector3(0.2, 0.1, 0.1)
+emission_shape = 1
+emission_sphere_radius = 0.1
+spread = 8.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 0.02
+radial_accel_max = 0.02
+tangential_accel_min = 0.01
+tangential_accel_max = 0.01
+damping_min = 1.376
+damping_max = 1.376
+scale_over_velocity_curve = SubResource("CurveTexture_0k2fb")
+color = Color(0.997584, 0.921268, 7.70092e-07, 1)
+alpha_curve = SubResource("CurveTexture_m85vu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7q13"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_m6agv"]
+material = SubResource("StandardMaterial3D_x7q13")
+size = Vector2(0.02, 0.02)
+orientation = 2
+
+[node name="Spinner_Tip_5" type="Node3D" node_paths=PackedStringArray("up_part_origin", "center", "coll_shape")]
+script = ExtResource("1_eihnw")
+ground_friction = 0.15
+up_part_origin = NodePath("up")
+center = NodePath("center")
+coll_shape = NodePath("CollisionShape3D")
+resistance = 190.0
+mass = 1.4
+speed = 5.3
+tier = 3
+
+[node name="tip5" parent="." instance=ExtResource("2_awi6s")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045, 0)
+shape = SubResource("CylinderShape3D_rfy1n")
+
+[node name="center" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045, 0)
+
+[node name="up" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09, 0)
+
+[node name="SpinnerTrail" type="Node3D" parent="."]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="SpinnerTrail"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+amount = 32
+lifetime = 0.2
+fixed_fps = 144
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_l1vmo")
+draw_pass_1 = SubResource("PlaneMesh_m6agv")

@@ -1,0 +1,268 @@
+[gd_scene load_steps=28 format=3 uid="uid://c1tygyhhrh6es"]
+
+[ext_resource type="Script" path="res://Scripts/buy_menu.gd" id="1_ga4d0"]
+[ext_resource type="PackedScene" uid="uid://d18h2rq1s0byr" path="res://Scenes/buy_scene.tscn" id="1_nd2by"]
+[ext_resource type="Texture2D" uid="uid://h2xo1el60god" path="res://Resources/Shopscreen-0007.png" id="2_figgt"]
+[ext_resource type="PackedScene" uid="uid://bs2havodthhjg" path="res://Resources/Parts/Tips/spinner_tip_1.tscn" id="2_xonyq"]
+[ext_resource type="PackedScene" uid="uid://h60pt06gixfs" path="res://Resources/Parts/Tips/spinner_tip_2.tscn" id="3_t1awl"]
+[ext_resource type="PackedScene" uid="uid://cgfmvwlfa8qik" path="res://Resources/Parts/Tips/spinner_tip_3.tscn" id="4_53juu"]
+[ext_resource type="PackedScene" uid="uid://bayd8a4yjp807" path="res://Resources/Parts/Tips/spinner_tip_4.tscn" id="5_4ghcl"]
+[ext_resource type="PackedScene" uid="uid://cyqp7md78bkn5" path="res://Resources/Parts/Tips/spinner_tip_5.tscn" id="6_pjf7h"]
+[ext_resource type="PackedScene" uid="uid://c1swf82xk3k3u" path="res://Resources/Parts/Middles/spinner_middle_1.tscn" id="7_i08t5"]
+[ext_resource type="PackedScene" uid="uid://8skbl8euvdq3" path="res://Resources/Parts/Middles/spinner_middle_2.tscn" id="8_bttfr"]
+[ext_resource type="PackedScene" uid="uid://dnkxbdy3uau7v" path="res://Resources/Parts/Tips/spinner_tip_6.tscn" id="8_nmtk5"]
+[ext_resource type="PackedScene" uid="uid://bbpwkxk5ofls8" path="res://Resources/Parts/Middles/spinner_middle_3.tscn" id="9_rmsfp"]
+[ext_resource type="PackedScene" uid="uid://bal2rl0tgktsq" path="res://Resources/Parts/Middles/spinner_middle_4.tscn" id="10_nrpeh"]
+[ext_resource type="PackedScene" uid="uid://dv18ptut44v8m" path="res://Resources/Parts/Tips/spinner_tip_7.tscn" id="10_uvrfq"]
+[ext_resource type="PackedScene" uid="uid://bgorji5wqdjgt" path="res://Resources/Parts/Middles/spinner_middle_5.tscn" id="11_gnjep"]
+[ext_resource type="PackedScene" uid="uid://y4x4ppkwclyh" path="res://Resources/Parts/Rings/spinner_ring_1.tscn" id="12_ycmyk"]
+[ext_resource type="PackedScene" uid="uid://dsrdvqcy5rw8r" path="res://Resources/Parts/Rings/spinner_ring_2.tscn" id="13_5prow"]
+[ext_resource type="PackedScene" uid="uid://bd67plg8alg02" path="res://Resources/Parts/Middles/spinner_middle_6.tscn" id="14_5458w"]
+[ext_resource type="PackedScene" uid="uid://mrkqluoy1qjb" path="res://Resources/Parts/Rings/spinner_ring_3.tscn" id="14_g64al"]
+[ext_resource type="PackedScene" uid="uid://8gw4jytaktfu" path="res://Resources/Parts/Rings/spinner_ring_4.tscn" id="15_q7nxu"]
+[ext_resource type="PackedScene" uid="uid://cj5daooc5o1xa" path="res://Resources/Parts/Rings/spinner_ring_5.tscn" id="16_xx07y"]
+[ext_resource type="PackedScene" uid="uid://c7stwfgio7g0e" path="res://Resources/Parts/Middles/spinner_middle_7.tscn" id="17_i465y"]
+[ext_resource type="Texture2D" uid="uid://cw8uoyrvu3x2e" path="res://Resources/shop-0004.png" id="18_ixobh"]
+[ext_resource type="PackedScene" uid="uid://bwovxkdc3gon" path="res://Resources/Parts/Rings/spinner_ring_6.tscn" id="20_sgh57"]
+[ext_resource type="Texture2D" uid="uid://crq8nepwvndov" path="res://Resources/back-0003.png" id="22_log04"]
+[ext_resource type="Texture2D" uid="uid://dp6bax3i31ngk" path="res://Resources/money-0002.png" id="23_duox2"]
+[ext_resource type="PackedScene" uid="uid://dbvlwm4yp01yj" path="res://Resources/Parts/Rings/spinner_ring_7.tscn" id="24_uyf6e"]
+
+[node name="BuyMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ga4d0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.321569, 0.321569, 0.321569, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.892)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_figgt")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 426.0
+offset_top = 241.0
+offset_right = 1786.0
+offset_bottom = 1059.0
+theme_override_constants/separation = 25
+
+[node name="tips" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+metadata/_edit_use_anchors_ = true
+
+[node name="BuyScene" parent="HBoxContainer/tips" instance=ExtResource("1_nd2by")]
+layout_mode = 2
+scene = ExtResource("2_xonyq")
+
+[node name="BuyScene2" parent="HBoxContainer/tips" instance=ExtResource("1_nd2by")]
+auto_translate_mode = 1
+layout_mode = 2
+price = 3
+scene = ExtResource("3_t1awl")
+
+[node name="BuyScene3" parent="HBoxContainer/tips" instance=ExtResource("1_nd2by")]
+auto_translate_mode = 1
+layout_mode = 2
+price = 3
+scene = ExtResource("4_53juu")
+
+[node name="BuyScene4" parent="HBoxContainer/tips" instance=ExtResource("1_nd2by")]
+auto_translate_mode = 1
+layout_mode = 2
+price = 10
+scene = ExtResource("5_4ghcl")
+
+[node name="BuyScene5" parent="HBoxContainer/tips" instance=ExtResource("1_nd2by")]
+auto_translate_mode = 1
+layout_mode = 2
+price = 10
+scene = ExtResource("6_pjf7h")
+
+[node name="BuyScene6" parent="HBoxContainer/tips" instance=ExtResource("1_nd2by")]
+layout_mode = 2
+price = 30
+scene = ExtResource("8_nmtk5")
+
+[node name="BuyScene7" parent="HBoxContainer/tips" instance=ExtResource("1_nd2by")]
+layout_mode = 2
+scene = ExtResource("10_uvrfq")
+
+[node name="middle" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="BuyScene" parent="HBoxContainer/middle" instance=ExtResource("1_nd2by")]
+auto_translate_mode = 1
+layout_mode = 2
+scene = ExtResource("7_i08t5")
+type = "middle"
+
+[node name="BuyScene2" parent="HBoxContainer/middle" instance=ExtResource("1_nd2by")]
+auto_translate_mode = 1
+layout_mode = 2
+price = 3
+scene = ExtResource("8_bttfr")
+type = "middle"
+
+[node name="BuyScene3" parent="HBoxContainer/middle" instance=ExtResource("1_nd2by")]
+auto_translate_mode = 1
+layout_mode = 2
+price = 3
+scene = ExtResource("9_rmsfp")
+type = "middle"
+
+[node name="BuyScene_4" parent="HBoxContainer/middle" instance=ExtResource("1_nd2by")]
+auto_translate_mode = 1
+layout_mode = 2
+price = 10
+scene = ExtResource("10_nrpeh")
+type = "middle"
+
+[node name="BuyScene5" parent="HBoxContainer/middle" instance=ExtResource("1_nd2by")]
+auto_translate_mode = 1
+layout_mode = 2
+price = 10
+scene = ExtResource("11_gnjep")
+type = "middle"
+
+[node name="BuyScene6" parent="HBoxContainer/middle" instance=ExtResource("1_nd2by")]
+layout_mode = 2
+price = 30
+scene = ExtResource("14_5458w")
+type = "middle"
+
+[node name="BuyScene7" parent="HBoxContainer/middle" instance=ExtResource("1_nd2by")]
+layout_mode = 2
+scene = ExtResource("17_i465y")
+type = "middle"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="BuyScene" parent="HBoxContainer/HBoxContainer" instance=ExtResource("1_nd2by")]
+auto_translate_mode = 1
+layout_mode = 2
+scene = ExtResource("12_ycmyk")
+type = "ring"
+
+[node name="BuyScene2" parent="HBoxContainer/HBoxContainer" instance=ExtResource("1_nd2by")]
+auto_translate_mode = 1
+layout_mode = 2
+price = 3
+scene = ExtResource("13_5prow")
+type = "ring"
+
+[node name="BuyScene3" parent="HBoxContainer/HBoxContainer" instance=ExtResource("1_nd2by")]
+auto_translate_mode = 1
+layout_mode = 2
+price = 3
+scene = ExtResource("14_g64al")
+type = "ring"
+
+[node name="BuyScene4" parent="HBoxContainer/HBoxContainer" instance=ExtResource("1_nd2by")]
+auto_translate_mode = 1
+layout_mode = 2
+price = 10
+scene = ExtResource("15_q7nxu")
+type = "ring"
+
+[node name="BuyScene5" parent="HBoxContainer/HBoxContainer" instance=ExtResource("1_nd2by")]
+auto_translate_mode = 1
+layout_mode = 2
+price = 10
+scene = ExtResource("16_xx07y")
+type = "ring"
+
+[node name="BuyScene6" parent="HBoxContainer/HBoxContainer" instance=ExtResource("1_nd2by")]
+layout_mode = 2
+price = 30
+scene = ExtResource("20_sgh57")
+type = "ring"
+
+[node name="BuyScene7" parent="HBoxContainer/HBoxContainer" instance=ExtResource("1_nd2by")]
+layout_mode = 2
+scene = ExtResource("24_uyf6e")
+type = "ring"
+
+[node name="button_back_shop" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0463542
+anchor_top = 0.0694444
+anchor_right = 0.0796875
+anchor_bottom = 0.102778
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(2.7, 2.7)
+theme_override_icons/icon = ExtResource("22_log04")
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="money_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.141146
+anchor_top = 0.500463
+anchor_right = 0.176563
+anchor_bottom = 0.519907
+offset_top = -33.5
+offset_right = 194.0
+offset_bottom = 33.5
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 64
+text = " : "
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.998438
+anchor_top = 0.0240741
+anchor_right = 0.998438
+anchor_bottom = 0.0240741
+offset_left = -320.0
+offset_bottom = 200.0
+grow_horizontal = 0
+pivot_offset = Vector2(160, 0)
+texture = ExtResource("18_ixobh")
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="moneytex" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0458333
+anchor_top = 0.456481
+anchor_right = 0.0583333
+anchor_bottom = 0.456481
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(3, 3)
+texture = ExtResource("23_duox2")
+metadata/_edit_use_anchors_ = true

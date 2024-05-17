@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://cgfmvwlfa8qik"]
+
+[ext_resource type="Script" path="res://Scripts/tip.gd" id="1_1foif"]
+[ext_resource type="PackedScene" uid="uid://j7wb1mh3lrdp" path="res://Resources/Parts/tip3.glb" id="2_gqetu"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_elgdj"]
+height = 0.09
+radius = 0.12
+
+[sub_resource type="Curve" id="Curve_2h2wy"]
+_data = [Vector2(0, 0.386449), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ruwip"]
+curve = SubResource("Curve_2h2wy")
+
+[sub_resource type="Gradient" id="Gradient_10co4"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qen4t"]
+gradient = SubResource("Gradient_10co4")
+
+[sub_resource type="Curve" id="Curve_s254j"]
+max_value = 3.0
+_data = [Vector2(0, 1.1229), 0.0, 0.0, 0, 0, Vector2(0.965686, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_82i4a"]
+curve = SubResource("Curve_s254j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h4yva"]
+particle_flag_damping_as_friction = true
+emission_shape_scale = Vector3(0.2, 0.1, 0.1)
+emission_shape = 1
+emission_sphere_radius = 0.1
+spread = 8.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 0.02
+radial_accel_max = 0.02
+tangential_accel_min = 0.01
+tangential_accel_max = 0.01
+damping_min = 1.376
+damping_max = 1.376
+scale_over_velocity_curve = SubResource("CurveTexture_82i4a")
+color = Color(0.353696, 0.00134785, 0.796055, 1)
+color_ramp = SubResource("GradientTexture1D_qen4t")
+alpha_curve = SubResource("CurveTexture_ruwip")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7q13"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_m6agv"]
+material = SubResource("StandardMaterial3D_x7q13")
+size = Vector2(0.02, 0.02)
+orientation = 2
+
+[node name="Spinner_Tip_3" type="Node3D" node_paths=PackedStringArray("up_part_origin", "center", "coll_shape")]
+script = ExtResource("1_1foif")
+ground_friction = 0.183
+up_part_origin = NodePath("up")
+center = NodePath("center")
+coll_shape = NodePath("CollisionShape3D")
+friction = 0.3
+resistance = 200.0
+mass = 2.0
+speed = 6.0
+tier = 2
+
+[node name="tip3" parent="." instance=ExtResource("2_gqetu")]
+
+[node name="center" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045, 0)
+
+[node name="up" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045, 0)
+shape = SubResource("CylinderShape3D_elgdj")
+
+[node name="SpinnerTrail" type="Node3D" parent="."]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="SpinnerTrail"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+amount = 32
+lifetime = 0.2
+fixed_fps = 144
+transform_align = 3
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_h4yva")
+draw_pass_1 = SubResource("PlaneMesh_m6agv")

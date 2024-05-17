@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnm4jv4jwqrtb"]
+
+[ext_resource type="PackedScene" uid="uid://r6ydfm5bj4yr" path="res://Effects/cometAbility/comet.tscn" id="1_gwa0e"]
+[ext_resource type="Script" path="res://Effects/cometAbility/comet_ability.gd" id="1_n7oj1"]
+[ext_resource type="PackedScene" uid="uid://ugo5qk02k8dk" path="res://Effects/cometAbility/comet_explosion.tscn" id="3_qecuk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gor0n"]
+radius = 0.830661
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0qgoh"]
+radius = 1.7
+
+[node name="CometAbility" type="Node3D"]
+script = ExtResource("1_n7oj1")
+speed = 10.0
+
+[node name="comet" parent="." instance=ExtResource("1_gwa0e")]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_gor0n")
+
+[node name="CometExplosion" parent="." instance=ExtResource("3_qecuk")]
+
+[node name="exparea" type="Area3D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="exparea"]
+shape = SubResource("CylinderShape3D_0qgoh")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="exparea" to="." method="_on_exparea_body_entered"]
+[connection signal="body_exited" from="exparea" to="." method="_on_exparea_body_exited"]
+
+[editable path="CometExplosion"]

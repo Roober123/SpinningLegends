@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://hw6sm5u5wm7a"]
+
+[ext_resource type="Script" path="res://Effects/RocketAbility/rocket.gd" id="1_3lfsw"]
+[ext_resource type="PackedScene" uid="uid://dwynbiov8li8x" path="res://Effects/RocketAbility/rocket.glb" id="1_mjxco"]
+[ext_resource type="Shader" uid="uid://dt3c3nkoh6ntu" path="res://Effects/transparent_texture.tres" id="3_220e2"]
+[ext_resource type="Texture2D" uid="uid://cxv042mqyd0yy" path="res://Effects/smoke_texture.png" id="4_rlxlq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s40yu"]
+radius = 0.106532
+height = 0.352337
+
+[sub_resource type="Curve" id="Curve_h0ou1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.43084, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7hvrk"]
+curve = SubResource("Curve_h0ou1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jr6y2"]
+angle_max = 360.0
+gravity = Vector3(0, 0, 0)
+color = Color(0.537011, 0.537011, 0.537011, 1)
+alpha_curve = SubResource("CurveTexture_7hvrk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4x0co"]
+render_priority = 0
+shader = ExtResource("3_220e2")
+shader_parameter/Texture = ExtResource("4_rlxlq")
+
+[sub_resource type="QuadMesh" id="QuadMesh_fr4m1"]
+material = SubResource("ShaderMaterial_4x0co")
+size = Vector2(0.15, 0.15)
+
+[node name="Rocket" type="Node3D"]
+script = ExtResource("1_3lfsw")
+
+[node name="rocket" parent="." instance=ExtResource("1_mjxco")]
+transform = Transform3D(1.6, 0, 0, 0, -5.24537e-08, 1.6, 0, -1.2, -6.99382e-08, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.00130889, 0.00151816)
+shape = SubResource("CapsuleShape3D_s40yu")
+
+[node name="FlameTrail" type="Node3D" parent="."]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="FlameTrail"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.100011)
+cast_shadow = 0
+lifetime = 0.08
+preprocess = 0.1
+fixed_fps = 144
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_jr6y2")
+draw_pass_1 = SubResource("QuadMesh_fr4m1")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

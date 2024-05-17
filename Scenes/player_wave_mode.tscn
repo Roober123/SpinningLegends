@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bok8o2uijxls1"]
+
+[ext_resource type="Script" path="res://Scripts/player_wave_mode.gd" id="1_24jd2"]
+
+[node name="PlayerWaveMode" type="CharacterBody3D"]
+script = ExtResource("1_24jd2")

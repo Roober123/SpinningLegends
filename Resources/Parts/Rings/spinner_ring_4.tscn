@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://8gw4jytaktfu"]
+
+[ext_resource type="Script" path="res://Scripts/ring_part.gd" id="1_dfxmu"]
+[ext_resource type="PackedScene" uid="uid://34lwwgrnlcky" path="res://Effects/BeamAbility/beam_ability.tscn" id="2_byvy6"]
+[ext_resource type="PackedScene" uid="uid://xyewnxogtpe5" path="res://Resources/Parts/ring4.glb" id="2_mwxxo"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_246q0"]
+height = 0.08
+radius = 0.21
+
+[node name="Spinner_Ring_4" type="Node3D" node_paths=PackedStringArray("up_part_origin", "center", "coll_shape")]
+script = ExtResource("1_dfxmu")
+ability = ExtResource("2_byvy6")
+ability_cooldown = 10.0
+up_part_origin = NodePath("up")
+center = NodePath("center")
+coll_shape = NodePath("CollisionShape3D")
+friction = 0.9
+resistance = 230.0
+recover_rate = 3.0
+mass = 2.8
+speed = 4.4
+tier = 3
+
+[node name="up" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+
+[node name="center" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+shape = SubResource("CylinderShape3D_246q0")
+
+[node name="ring4" parent="." instance=ExtResource("2_mwxxo")]
