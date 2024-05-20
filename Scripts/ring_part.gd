@@ -15,6 +15,8 @@ func cast_ability()->void:
 		return
 	if can_use==false:
 		return
+	if is_instance_valid(parent)==false:
+		return
 	can_use = false
 	var x : Ability = ability.instantiate()
 	x.parent = parent

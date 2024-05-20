@@ -9,31 +9,36 @@ var dir : Vector3
 
 var active : Dictionary
 
+var exploded : bool = false
+
 
 func start()->void:
 	damage*=stats_scaling
 	knock*=stats_scaling
-	global_position = parent.global_position + Vector3(4,10,0)
-	dir = global_position.direction_to(parent.global_position)
-
+	$comet_sphere.hide()
+	await  get_tree().create_timer(0.1).timeout
+	$comet_sphere.show()
 func update(delta : float)->void:
-	global_position+=delta*dir*speed
+	if !exploded:
+		global_position = parent.global_position
 	if is_queued_for_deletion():
 		return
 	for i in active:
-		if i!=null:
+		if is_instance_valid(i):
 			i.velocity += global_position.direction_to(i.global_position) * knock /i.mass * delta
 			i.take_damage(damage* delta)
 	
 func _on_area_3d_body_entered(body):
-	$comet.call_deferred('queue_free')
-	$Area3D.call_deferred('queue_free')
-	$CometExplosion/GPUParticles3D.emitting = true
-	$CometExplosion/GPUParticles3D2.emitting = true
-	$exparea.set_deferred('monitoring',true)
-	await  get_tree().create_timer(1).timeout
-	active.clear()
-	call_deferred('queue_free')
+	if body is Spinner and body != parent:
+		exploded = true
+		$Area3D.call_deferred('queue_free')
+		$comet_sphere.hide()
+		$CometExplosion/GPUParticles3D.emitting = true
+		$CometExplosion/GPUParticles3D2.emitting = true
+		$exparea.set_deferred('monitoring',true)
+		await  get_tree().create_timer(1).timeout
+		active.clear()
+		call_deferred('queue_free')
 
 
 func _on_exparea_body_entered(body):

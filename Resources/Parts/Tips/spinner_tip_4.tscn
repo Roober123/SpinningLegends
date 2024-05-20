@@ -6,7 +6,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3x0gk"]
 height = 0.09
-radius = 0.1
+radius = 0.0729715
 
 [node name="Spinner_Tip_4" type="Node3D" node_paths=PackedStringArray("up_part_origin", "center", "coll_shape")]
 script = ExtResource("1_0hnmy")

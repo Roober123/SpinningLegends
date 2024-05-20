@@ -5,6 +5,8 @@ extends Ability
 var stats_scaling : float = 1.0
 var duration : float = 5
 
+var active : Dictionary
+
 func start()->void:
 	damage = stats_scaling * damage
 	global_position = parent.global_position
@@ -18,11 +20,19 @@ func start()->void:
 	await  get_tree().create_timer(duration-0.1).timeout
 	call_deferred('queue_free')
 
+func update(delta : float)->void:
+	for i in active:
+		if is_instance_valid(i):
+			i.take_damage(damage*delta)
+			i.velocity += global_position.direction_to(i.global_position) * knock_power / i.mass * delta
+
 
 func _on_area_3d_body_entered(body):
 	var i = body
-	if parent==null:
-		return
 	if i is Spinner and i != parent:
-		i.take_damage(damage)
-		i.velocity += global_position.direction_to(i.global_position) * knock_power / i.mass
+		active[body]=true
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body is Spinner and body != parent:
+		active.erase(body)

@@ -105,7 +105,7 @@ func Movement_physics(delta : float)->void:
 		velocity.y -= 8 * delta
 	else:
 		velocity.y = 0
-	velocity.limit_length(15)
+	velocity = velocity.limit_length(15)
 	
 	if is_zero_approx(velocity.length())==false:
 		var move_vec : Vector2 = Vector2(velocity.x,velocity.z).normalized() * mass * tip.ground_friction * delta 
@@ -125,6 +125,7 @@ func Movement_physics(delta : float)->void:
 	#	#global_transform = global_transform.interpolate_with(ntransf,10*delta)
 	#	global_transform = ntransf
 	last_velocity = get_real_velocity()
+	
 
 
 var movement_queue : Array[Vector3]

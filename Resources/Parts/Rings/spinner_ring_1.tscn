@@ -16,7 +16,7 @@ up_part_origin = NodePath("up")
 center = NodePath("center")
 coll_shape = NodePath("CollisionShape3D")
 friction = 1.0
-resistance = 100.0
+resistance = 200.0
 speed = 1.0
 
 [node name="up" type="Node3D" parent="."]

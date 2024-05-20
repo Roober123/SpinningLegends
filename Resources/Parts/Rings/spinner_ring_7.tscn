@@ -12,13 +12,14 @@ radius = 0.2
 [node name="Spinner_Ring_7" type="Node3D" node_paths=PackedStringArray("up_part_origin", "center", "coll_shape")]
 script = ExtResource("1_u24c6")
 ability = ExtResource("2_ro3ic")
-ability_cooldown = 2.0
+ability_cooldown = 7.0
 ability_tex = ExtResource("3_iy1gn")
 up_part_origin = NodePath("up")
 center = NodePath("center")
 coll_shape = NodePath("CollisionShape3D")
 friction = 0.6
-resistance = 300.0
+resistance = 600.0
+recover_rate = 3.0
 mass = 6.0
 speed = 6.5
 tier = 4

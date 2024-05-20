@@ -30,8 +30,8 @@ func _process(delta: float) -> void:
 	t-=delta
 	wave_label.text = "Wave  "+ str(wave_nr)
 	if t <= 0 and get_tree().get_nodes_in_group("Spinners").size()==1:
-		Global.money += last_nr_of_enemies
-		Global.xp += last_nr_of_enemies
+		Global.money += last_nr_of_enemies * int(max(1,wave_nr*0.1))
+		Global.xp += last_nr_of_enemies * int(max(1,wave_nr*0.1))
 		t = wave_cool
 		wave_nr+=1
 		spawn_wave()
@@ -40,7 +40,9 @@ func _process(delta: float) -> void:
 func spawn_wave()->void:
 	if wave_nr % 5 !=0:
 		var nr : float = min(max(1,int(wave_nr*0.2)),6)
+		last_nr_of_enemies = nr
 		for i in nr :
+			await  get_tree().create_timer(0.1).timeout
 			var e : BasicEnemy = BasicEnemy.new()
 			e.max_tier = wave_nr/10 + 1
 			e.position.x = randf_range(-2,2)
@@ -48,7 +50,7 @@ func spawn_wave()->void:
 			e.position.y = 0.6
 			e.stats_boost_overall = 1 + (wave_nr - 5) * 0.1 
 			add_child(e)
-		last_nr_of_enemies = nr
+		
 	else:
 		var e : BasicEnemy = BasicEnemy.new()
 		e.max_tier = wave_nr/10 + 1

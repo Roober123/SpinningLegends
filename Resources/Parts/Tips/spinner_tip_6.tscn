@@ -5,7 +5,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_htc7v"]
 height = 0.09
-radius = 0.124519
+radius = 0.0623365
 
 [sub_resource type="Curve" id="Curve_4s8uf"]
 _data = [Vector2(0, 0.386449), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

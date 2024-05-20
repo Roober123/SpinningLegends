@@ -86,3 +86,11 @@ func _on_button_reset_progress_pressed() -> void:
 	DataHandler.delete_local_data()
 	DataHandler.load_local_data()
 	Global.hide_tweened($Options)
+
+
+func _on_xp_cheat_pressed() -> void:
+	Global.xp += 100
+
+
+func _on_money_cheat_pressed() -> void:
+	Global.money += 100

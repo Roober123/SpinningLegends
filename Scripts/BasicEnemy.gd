@@ -21,7 +21,7 @@ func get_good_packed(arr : Array)->PackedScene:
 func _ready():
 	if is_boss:
 		scale = Vector3(1.5,1.5,1.5)
-		stats_boost_overall  *=2.4
+		stats_boost_overall  *=1.6
 	CollisionManager.game_folder=get_parent()
 	var x : BeehaveTree = ai.instantiate()
 	add_child(x)
@@ -31,11 +31,13 @@ func _ready():
 	swap_part('middle',get_good_packed(DataHandler.spinners_data.middles))
 	if !is_boss:
 		ring.ability = null
-		speed = min(stats_boost_overall,1.75) * speed
+		speed = stats_boost_overall * speed
 	else:
-		speed = speed * (max(1,stats_boost_overall*0.2))
-	mass = stats_boost_overall * mass
+		speed = speed * stats_boost_overall*0.7
 	
+	
+	
+	mass = stats_boost_overall * mass
 	resistance = stats_boost_overall * resistance
 	recover_rate = stats_boost_overall * recover_rate
 

@@ -11,9 +11,11 @@ func _ready():
 	swap_part('middle',Global.player_middle)
 	CollisionManager.game_folder=get_parent()
 	mass = stats_boost_overall * mass
-	speed = min(1.75,stats_boost_overall) * speed
+	speed = stats_boost_overall * speed
 	resistance = stats_boost_overall * resistance
 	recover_rate = stats_boost_overall * recover_rate
+	
+	
 	
 func _process(delta):
 	if Input.is_action_just_pressed("ability"):
@@ -23,7 +25,12 @@ func _process(delta):
 func Movement(delta : float)->void:
 	Movement_physics(delta)
 	var dir : Vector2 = Input.get_vector("left",'right','up','down')
-	velocity += speed * delta * global_transform.basis.z * dir.y + speed * delta * global_transform.basis.x * dir.x
+	var v1 : Vector3 =  speed * delta * global_transform.basis.z * dir.y
+	v1.y=0
+	var v2 : Vector3 = speed * delta * global_transform.basis.x * dir.x
+	v2.y=0
+	velocity += v1 + v2
+	velocity = velocity.limit_length(15)
 	move_and_slide()
 func _physics_process(delta):
 	Movement(delta)

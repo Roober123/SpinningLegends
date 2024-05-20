@@ -19,7 +19,7 @@ func start()->void:
 
 func update(delta : float)->void:
 	for i in active_spinners:
-		if i !=null:
+		if is_instance_valid(i) :
 			i.velocity += i.global_position.direction_to(global_position) * attract_power / i.mass  * delta
 			i.take_damage( damage_power * delta )
 

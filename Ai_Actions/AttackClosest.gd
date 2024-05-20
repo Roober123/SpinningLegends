@@ -35,7 +35,8 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 		return SUCCESS
 	if selected_node==null:
 		return SUCCESS
-	actor.AddVelocityTowards(selected_node.global_position)
+	if is_instance_valid(selected_node):
+		actor.AddVelocityTowards(selected_node.global_position)
 	return RUNNING
 
 func after_run(_actor : Node, _black_board : Blackboard)->void:

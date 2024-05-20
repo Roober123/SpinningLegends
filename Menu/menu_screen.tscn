@@ -430,6 +430,36 @@ theme_override_icons/icon = ExtResource("12_rkkod")
 flat = true
 metadata/_edit_use_anchors_ = true
 
+[node name="xp_cheat" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.222396
+anchor_top = 0.327778
+anchor_right = 0.456771
+anchor_bottom = 0.389815
+offset_left = 534.0
+offset_top = 126.0
+offset_right = 542.0
+offset_bottom = 134.0
+theme_override_font_sizes/font_size = 48
+text = "Give 100 XP ( cheat)"
+metadata/_edit_use_anchors_ = true
+
+[node name="money_cheat" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.197396
+anchor_top = 0.417593
+anchor_right = 0.482292
+anchor_bottom = 0.47963
+offset_left = 534.0
+offset_top = 126.0
+offset_right = 542.0
+offset_bottom = 134.0
+theme_override_font_sizes/font_size = 48
+text = "Give 100 Money ( cheat)"
+metadata/_edit_use_anchors_ = true
+
 [node name="BuyMenu" parent="." instance=ExtResource("2_lf2v1")]
 visible = false
 layout_mode = 1
@@ -447,6 +477,8 @@ layout_mode = 1
 [connection signal="text_submitted" from="Options/VBoxContainer/resolution_scale/res_scale" to="." method="_on_res_scale_text_submitted"]
 [connection signal="pressed" from="Options/Button_back" to="." method="_on_button_back_pressed"]
 [connection signal="pressed" from="Options/button_reset_progress" to="." method="_on_button_reset_progress_pressed"]
+[connection signal="pressed" from="Options/xp_cheat" to="." method="_on_xp_cheat_pressed"]
+[connection signal="pressed" from="Options/money_cheat" to="." method="_on_money_cheat_pressed"]
 [connection signal="pressed" from="BuyMenu/button_back_shop" to="." method="_on_button_back_shop_pressed"]
 
 [editable path="BuyMenu"]

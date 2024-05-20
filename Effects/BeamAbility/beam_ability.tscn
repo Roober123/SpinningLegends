@@ -8,8 +8,8 @@ radius = 1.23418
 
 [node name="beam_ability" type="Node3D"]
 script = ExtResource("1_rmxas")
-damage = 50.0
-knock_power = 50.0
+damage = 700.0
+knock_power = 200.0
 
 [node name="Beam" parent="." instance=ExtResource("2_s4q8o")]
 
@@ -21,3 +21,4 @@ monitorable = false
 shape = SubResource("SphereShape3D_knvn0")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -5,7 +5,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rfy1n"]
 height = 0.09
-radius = 0.075
+radius = 0.0514811
 
 [sub_resource type="Curve" id="Curve_jaiqb"]
 _data = [Vector2(0, 0.386449), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -50,12 +50,12 @@ orientation = 2
 
 [node name="Spinner_Tip_5" type="Node3D" node_paths=PackedStringArray("up_part_origin", "center", "coll_shape")]
 script = ExtResource("1_eihnw")
-ground_friction = 0.15
+ground_friction = 0.28
 up_part_origin = NodePath("up")
 center = NodePath("center")
 coll_shape = NodePath("CollisionShape3D")
 resistance = 190.0
-mass = 1.4
+mass = 5.0
 speed = 5.3
 tier = 3
 

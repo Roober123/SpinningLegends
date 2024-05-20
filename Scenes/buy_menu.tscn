@@ -105,6 +105,7 @@ scene = ExtResource("8_nmtk5")
 
 [node name="BuyScene7" parent="HBoxContainer/tips" instance=ExtResource("1_nd2by")]
 layout_mode = 2
+price = 30
 scene = ExtResource("10_uvrfq")
 
 [node name="middle" type="HBoxContainer" parent="HBoxContainer"]
@@ -153,6 +154,7 @@ type = "middle"
 
 [node name="BuyScene7" parent="HBoxContainer/middle" instance=ExtResource("1_nd2by")]
 layout_mode = 2
+price = 30
 scene = ExtResource("17_i465y")
 type = "middle"
 
@@ -202,6 +204,7 @@ type = "ring"
 
 [node name="BuyScene7" parent="HBoxContainer/HBoxContainer" instance=ExtResource("1_nd2by")]
 layout_mode = 2
+price = 30
 scene = ExtResource("24_uyf6e")
 type = "ring"
 
