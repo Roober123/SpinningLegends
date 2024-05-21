@@ -6,6 +6,6 @@ Skybox texture care e cu licenta CC0
 
 Rolul elevilor : 
 
-Mitri Robert - Cristian : scripting , game design , audio
+Mitri Robert-Cristian : scripting , game design , audio
 Dinu Alexandru : UI , modeling , game design
 
