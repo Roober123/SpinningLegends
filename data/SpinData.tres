@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="SpinnersData" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Scripts/Spinners_data.gd" id="1_aoal4"]
+[ext_resource type="Script" path="res://Scripts/Spinners_data.gd" id="1_dhjq7"]
 
 [resource]
-script = ExtResource("1_aoal4")
+script = ExtResource("1_dhjq7")
 rings = Array[String](["res://Resources/Parts/Rings/spinner_ring_1.tscn", "res://Resources/Parts/Rings/spinner_ring_2.tscn", "res://Resources/Parts/Rings/spinner_ring_3.tscn", "res://Resources/Parts/Rings/spinner_ring_4.tscn", "res://Resources/Parts/Rings/spinner_ring_5.tscn", "res://Resources/Parts/Rings/spinner_ring_6.tscn", "res://Resources/Parts/Rings/spinner_ring_7.tscn"])
 middles = Array[String](["res://Resources/Parts/Middles/spinner_middle_1.tscn", "res://Resources/Parts/Middles/spinner_middle_2.tscn", "res://Resources/Parts/Middles/spinner_middle_3.tscn", "res://Resources/Parts/Middles/spinner_middle_4.tscn", "res://Resources/Parts/Middles/spinner_middle_5.tscn", "res://Resources/Parts/Middles/spinner_middle_6.tscn", "res://Resources/Parts/Middles/spinner_middle_7.tscn"])
 tips = Array[String](["res://Resources/Parts/Tips/spinner_tip_1.tscn", "res://Resources/Parts/Tips/spinner_tip_2.tscn", "res://Resources/Parts/Tips/spinner_tip_3.tscn", "res://Resources/Parts/Tips/spinner_tip_4.tscn", "res://Resources/Parts/Tips/spinner_tip_5.tscn", "res://Resources/Parts/Tips/spinner_tip_6.tscn", "res://Resources/Parts/Tips/spinner_tip_7.tscn"])

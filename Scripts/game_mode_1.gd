@@ -16,6 +16,7 @@ func _ready() -> void:
 
 
 func reset()->void:
+	Global.high_score=max(Global.high_score,wave_nr)
 	DataHandler.save_local_data()
 	get_tree().call_deferred('change_scene_to_file',"res://Menu/menu_screen.tscn")
 

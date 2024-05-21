@@ -30,4 +30,5 @@ func hide_tweened(n : Control):
 
 
 var nr : int = 0
+var high_score : int = 0
 

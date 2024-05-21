@@ -14,6 +14,8 @@ var spinners_data : Dictionary={
 var scaling : float = 1.0
 
 
+
+
 func register_data()->void:
 	var sp :SpinnersData = SpinnersData.new()
 	var dir = DirAccess.open('res://Resources/Parts/Tips')
@@ -63,6 +65,7 @@ func save_local_data()->void:
 	s.tip = Global.player_tip.resource_path
 	s.middle = Global.player_middle.resource_path
 	s.ring = Global.player_ring.resource_path
+	s.high_score = Global.high_score
 	DirAccess.make_dir_absolute(local_save_file_name)
 	ResourceSaver.save(s,local_save_file_name+ local_data_save_name + ".res")
 
@@ -83,6 +86,7 @@ func load_local_data()->void:
 	Global.money = s.money
 	Global.xp = s.xp
 	Global.unlocked = s.unlocked
+	Global.high_score = s.high_score
 	if s.tip != null:
 		Global.player_tip = load(s.tip)
 	if s.middle != null:

@@ -10,3 +10,4 @@ extends Resource
 @export var tip : String = "res://Resources/Parts/Tips/spinner_tip_1.tscn"
 @export var middle : String = "res://Resources/Parts/Middles/spinner_middle_1.tscn"
 @export var ring : String = "res://Resources/Parts/Rings/spinner_ring_1.tscn"
+@export var high_score : int  = 0

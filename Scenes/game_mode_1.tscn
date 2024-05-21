@@ -31,14 +31,14 @@ glow_blend_mode = 0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjtp7"]
 resource_name = "region1"
 cull_mode = 2
-albedo_color = Color(0.319993, 0.319993, 0.319993, 1)
+albedo_color = Color(0.131916, 0.216597, 0.545878, 1)
 metallic = 0.346457
 roughness = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhuyv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvldc"]
 resource_name = "region2"
 cull_mode = 2
-albedo_color = Color(0.399775, 0.109887, 0.86666, 1)
+albedo_color = Color(0.775859, 0.564708, 7.70092e-07, 1)
 metallic = 0.102362
 roughness = 0.326772
 
@@ -88,7 +88,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 192,
 "index_data": PackedByteArray("AAAgAAEAAAAhACAAAQAiAAIAAQAgACIAAgAjAAMAAgAiACMAAwAkAAQAAwAjACQABAAlAAUABAAkACUABQAmAAYABQAlACYABgAnAAcABgAmACcABwAoAAgABwAnACgACAApAAkACAAoACkACQAqAAoACQApACoACgArAAsACgAqACsACwAsAAwACwArACwADAAtAA0ADAAsAC0ADQAuAA4ADQAtAC4ADgAvAA8ADgAuAC8ADwAwABAADwAvADAAEAAxABEAEAAwADEAEQAyABIAEQAxADIAEgAzABMAEgAyADMAEwA0ABQAEwAzADQAFAA1ABUAFAA0ADUAFQA2ABYAFQA1ADYAFgA3ABcAFgA2ADcAFwA4ABgAFwA3ADgAGAA5ABkAGAA4ADkAGQA6ABoAGQA5ADoAGgA7ABsAGgA6ADsAGwA8ABwAGwA7ADwAHAA9AB0AHAA8AD0AHQA+AB4AHQA9AD4AHgA/AB8AHgA+AD8AHwAhAAAAHwA/ACEA"),
-"material": SubResource("StandardMaterial3D_dhuyv"),
+"material": SubResource("StandardMaterial3D_dvldc"),
 "name": "region2",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

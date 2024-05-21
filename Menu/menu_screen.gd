@@ -69,8 +69,10 @@ func _on_button_quit_pressed() -> void:
 	get_tree().quit()
 
 @onready var xp_label : Label = $xp_label
+@onready var high_score_label : Label = $high_score_label
 func _process(delta: float) -> void:
 	xp_label.text = ": %s" % Global.xp
+	high_score_label.text = "High Score : %s" % Global.high_score
 
 
 func _on_tree_entered() -> void:
