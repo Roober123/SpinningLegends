@@ -73,6 +73,9 @@ func delete_local_data()->void:
 
 func load_local_data()->void:
 	var dir = DirAccess.open(local_save_file_name)
+	if dir == null:
+		return
+		
 	if dir.file_exists(local_save_file_name + local_data_save_name + ".res")==false:
 		return
 	var r = ResourceLoader.load(local_save_file_name + local_data_save_name + ".res")

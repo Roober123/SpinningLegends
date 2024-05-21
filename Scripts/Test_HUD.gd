@@ -6,6 +6,7 @@ var menu : PackedScene = preload("res://Menu/menu_screen.tscn")
 
 func _ready() -> void:
 	get_viewport().scaling_3d_scale = DataHandler.scaling
+	CollisionManager.sound_pl = $"../AudioStreamPlayer3D"
 	if OS.get_name()!='Android' and OS.get_name()!='iOS':
 		$Ability1.queue_free()
 		$Ability2.queue_free()

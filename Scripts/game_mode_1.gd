@@ -8,6 +8,7 @@ var wave_cool : float = 2
 var t : float
 
 func _ready() -> void:
+	get_viewport().scaling_3d_scale = DataHandler.scaling
 	CollisionManager.arena_center = Vector3.ZERO
 	player.connect('Die',reset)
 	CollisionManager.sound_pl = $AudioStreamPlayer3D

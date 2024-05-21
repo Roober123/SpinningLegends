@@ -50,9 +50,7 @@ func resolve(part1 : Spinner,part2 : Spinner,coll_data : KinematicCollision3D,co
 	if shake_cam:
 		shake_cam.start_shake(min(j,50)*0.0015,0.12)
 	if sound_pl:
-		sound_pl.global_position = coll_data.get_position(coll_nr)
-		sound_pl.stream=audio_streams.pick_random()
-		sound_pl.play()
+		add_sound(coll_data.get_position(coll_nr),0)
 	
 	a.velocity += v1
 	b.velocity += v2
@@ -75,5 +73,14 @@ func add_contact(pos : Vector3)->void:
 	var ind : Node3D = contact.instantiate()
 	game_folder.add_child(ind)
 	ind.global_position = pos
-	
 
+
+func add_sound(p : Vector3,intesity : float)->void:
+	if !sound_pl:
+		return
+	if sound_pl.playing==true:
+		return
+	sound_pl.global_position = p
+	sound_pl.stream=audio_streams.pick_random()
+	sound_pl.play()
+	sound_pl.volume_db = intesity

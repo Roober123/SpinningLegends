@@ -18,4 +18,5 @@ func _on_collision_area_body_entered(body):
 	var i = body
 	if i is Spinner and i != parent:
 			i.take_damage(damage)
+			CollisionManager.add_sound(Vector3.ZERO,-3)
 			i.velocity += global_position.direction_to(i.global_position) * knock_power

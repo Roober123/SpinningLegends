@@ -25,6 +25,7 @@ func update(delta : float)->void:
 		return
 	for i in active:
 		if is_instance_valid(i):
+			CollisionManager.add_sound(Vector3.ZERO,-3)
 			i.velocity += global_position.direction_to(i.global_position) * knock /i.mass * delta
 			i.take_damage(damage* delta)
 	

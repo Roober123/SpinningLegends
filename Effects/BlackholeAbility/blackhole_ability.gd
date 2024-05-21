@@ -20,6 +20,7 @@ func start()->void:
 func update(delta : float)->void:
 	for i in active_spinners:
 		if is_instance_valid(i) :
+			CollisionManager.add_sound(Vector3.ZERO,-3)
 			i.velocity += i.global_position.direction_to(global_position) * attract_power / i.mass  * delta
 			i.take_damage( damage_power * delta )
 

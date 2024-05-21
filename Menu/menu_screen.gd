@@ -7,7 +7,8 @@ func _on_button_1v_1_pressed():
 
 
 
-
+func _ready() -> void:
+	get_viewport().scaling_3d_scale = 1.0
 
 
 
