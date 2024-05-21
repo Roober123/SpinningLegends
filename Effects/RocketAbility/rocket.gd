@@ -53,6 +53,7 @@ func _on_area_3d_body_entered(body):
 		return
 	var e : Node3D  = exp_att.instantiate()
 	get_parent().add_child(e)
+	CollisionManager.add_sound(Vector3.ZERO,-3)
 	e.global_position = global_position
 	e.knock_power = knock
 	e.damage = damage

@@ -19,7 +19,7 @@ var parent : Spinner
 
 func _ready():
 	if up_part_origin == null or (get_parent() is Spinner == false):
-		push_warning('part is broken : ',name)
+		#push_warning('part is broken : ',name)
 		return
 	parent = get_parent()
 
