@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://y4x4ppkwclyh"]
+[gd_scene load_steps=6 format=3 uid="uid://y4x4ppkwclyh"]
 
 [ext_resource type="Script" path="res://Scripts/ring_part.gd" id="1_41gkk"]
 [ext_resource type="PackedScene" uid="uid://ck6hitscw6jw2" path="res://Resources/Parts/ring1.glb" id="2_40pgn"]
 [ext_resource type="PackedScene" uid="uid://cqkcegmbrwrf0" path="res://Effects/ShockAbility/shock_ability.tscn" id="2_iq4ka"]
+[ext_resource type="Texture2D" uid="uid://be2dyrlnappgi" path="res://Resources/ability1-0003.png" id="3_1geil"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wddqd"]
 height = 0.0981862
@@ -12,6 +13,7 @@ radius = 0.181089
 script = ExtResource("1_41gkk")
 ability = ExtResource("2_iq4ka")
 ability_cooldown = 3.0
+ability_tex = ExtResource("3_1geil")
 up_part_origin = NodePath("up")
 center = NodePath("center")
 coll_shape = NodePath("CollisionShape3D")
