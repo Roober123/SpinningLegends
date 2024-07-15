@@ -65,5 +65,3 @@ func spawn_wave()->void:
 		last_nr_of_enemies = 1
 		#await  get_tree().create_timer(0.1).timeout
 		#e.resistance_offset = max(e.resistance - 120, (30 - wave_nr) * 20)
-
-

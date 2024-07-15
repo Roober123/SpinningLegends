@@ -22,5 +22,3 @@ func _ready():
 		#push_warning('part is broken : ',name)
 		return
 	parent = get_parent()
-
-

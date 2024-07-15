@@ -146,4 +146,3 @@ func Update(delta : float)->void:
 		emit_signal('Die')
 		call_deferred('queue_free')
 	damage_taken = clamp(damage_taken - delta*recover_rate,0,resistance+1000)
-

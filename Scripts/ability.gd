@@ -13,4 +13,3 @@ func start()->void:
 	pass
 func update(_delta : float)->void:
 	pass
-
